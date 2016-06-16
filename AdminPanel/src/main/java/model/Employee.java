@@ -8,7 +8,7 @@ public class Employee {
     private String fullname;
     private int age;
     private int experiance;
-    private Position position;
+//    private Position position;
 
     public String getFullname() {
         return fullname;
@@ -27,4 +27,11 @@ public class Employee {
     }
 
 
+    public int getExperiance() {
+        return experiance;
+    }
+
+    public void setExperiance(int experiance) {
+        this.experiance = experiance;
+    }
 }
