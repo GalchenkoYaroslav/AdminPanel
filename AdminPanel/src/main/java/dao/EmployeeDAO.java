@@ -2,22 +2,29 @@ package dao;
 
 import model.Employee;
 
-import java.sql.SQLException;
-import java.util.List;
+import java.sql.*;
 
 /**
  * Created by Yaroslav on 16.06.2016.
  */
-public interface EmployeeDAO {
-   String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    String DB_URL = "jdbc:mysql://localhost:3306/adminpaneldb";
-    //  Database credentials
-    String USER = "root";
-    String PASS = "root";
+public class EmployeeDAO extends AbstractDAO {
 
-    void create();
-    Employee readEmployee(String name) throws SQLException, ClassNotFoundException;
-    void update();
-    void delete();
-    void getMysqlConnection() throws SQLException, ClassNotFoundException;
+    private Employee employee;
+
+    public Employee read(int id) throws SQLException, ClassNotFoundException {
+        getMysqlConnection();
+       stmt = conn.createStatement();
+        String sql = "SELECT * FROM adminpaneldb.employee where id = " + id;
+        ResultSet rs = stmt.executeQuery(sql);
+        employee = new Employee();
+        while(rs.next()) {
+            //Retrieve by column name
+            employee.setFullname(rs.getString("Name"));
+            employee.setAge(rs.getInt("Age"));
+            employee.setExperiance(rs.getInt("Experiance"));
+            //Display values
+        }
+        return employee;
+    }
+
 }

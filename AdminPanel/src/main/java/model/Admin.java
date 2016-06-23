@@ -7,12 +7,11 @@ public class Admin {
 
     private String fullname;
     private int age;
+
     public String getFullname() {
         return fullname;
     }
-
     public void setFullname(String fullname) {
-
         this.fullname = fullname;
     }
 
